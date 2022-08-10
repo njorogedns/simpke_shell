@@ -1,5 +1,10 @@
 #include "main.h"
-
+/**
+ * _strdup - duplicates a string
+ * @str: pointer to string to duplicate
+ *
+ * Return: pointer to duplicated string
+ */
 char *_strdup(char *str)
 {
   int i;
@@ -21,9 +26,12 @@ char *_strdup(char *str)
   dest_str[i] = '\0';
   return (dest_str);
 }
-
-
-
+/**
+ * _splitstring - counts number of words in string
+ * @str: pointer to string to count
+ *
+ * Return: number of words in string
+ */
 int _splitstring(char *str)
 {
   int i, searchflag = 1, wordcount = 0;
@@ -39,9 +47,12 @@ int _splitstring(char *str)
     }
   return (wordcount);
 }
-
-
-
+/**
+ * _strcmp - compares two strings
+ * @s1: char type
+ * @s2: char type
+ * Return: integer value
+ */
 int _strcmp(const char *s1, const char *s2)
 {
   while ((*s1 != '\0' && *s2 != '\0') && *s1 == *s2)
@@ -54,8 +65,14 @@ int _strcmp(const char *s1, const char *s2)
   else
     return (*s1 - *s2);
 }
-
-
+/**
+ * _strcat - concatenates two strings
+ * @dest: char type
+ * @src: char type
+ * i - integer type
+ * j - integer type
+ * Return: char type
+ */
 char *_strcat(char *dest, char *src)
 {
   int i, j;
@@ -67,8 +84,11 @@ char *_strcat(char *dest, char *src)
   dest[i] = '\0';
   return (dest);
 }
-
-
+/**
+ * _strlen - lenght of string
+ * @s:char
+ * Return:int
+ */
 int _strlen(char *s)
 {
   int i;
