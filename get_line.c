@@ -1,5 +1,9 @@
 #include "main.h"
-
+/**
+* _getline - Read The Input By User From Stdin
+* Return: Input
+*alx-school-- shell
+*/
 ssize_t _getline(char **lineptr, size_t *n, FILE *stream)
 {
   int i;
@@ -42,8 +46,13 @@ ssize_t _getline(char **lineptr, size_t *n, FILE *stream)
     input = 0;
   return (retval);
 }
-
-
+/**
+ * bring_line - assigns the line var for get_line
+ * @lineptr: Buffer that store the input str
+ * @buffer: str that is been called to line
+ * @n: size of line
+ * @j: size of buffer
+ */
 void _bringline(char **lineptr, size_t *n, char *buffer, size_t j)
 {
   if (*lineptr == NULL)
@@ -68,7 +77,12 @@ void _bringline(char **lineptr, size_t *n, char *buffer, size_t j)
       free(buffer);
     }
 }
-
+/**
+ * *_strcpy - Copies the string pointed to by src.
+ * @dest: Type char pointer the dest of the copied str
+ * @src: Type char pointer the source of str
+ * Return: the dest.
+ */
 char *_strcpy(char *dest, char *src)
 {
   size_t a;
@@ -81,8 +95,13 @@ char *_strcpy(char *dest, char *src)
 
   return (dest);
 }
-
-
+/**
+ **_realloc -  Reallocates A Memory Block Using Malloc And Free
+ *@ptr: Pointer
+ *@old_size: Previous Size Of The Pointer
+ *@new_size: New Size Of The Pointer
+ *Return: Void Pointer Rellocated Memory
+ */
 void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 {
   void *newptr;

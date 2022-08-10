@@ -1,5 +1,10 @@
 #include "main.h"
-
+/**
+ * tokenize - creates array of tokens based on user string
+ * @buffer: pointer to user string
+ *
+ * Return: pointer to array of user strings
+ */
 char **tokenize(char *buffer)
 {
   char *token, **av, *delimiter = "\n";
@@ -21,9 +26,12 @@ char **tokenize(char *buffer)
   av[i] = NULL;
   return (av);
 }
-
-
-
+/**
+ * _splitPATH - counts the number of PATH members
+ * @str: pointer to string to count
+ *
+ * Return: number of PATH members
+ */
 int _splitPATH(char *str)
 {
   int i, searchflag = 1, wordcount = 0;
@@ -40,9 +48,13 @@ int _splitPATH(char *str)
     }
   return (wordcount);
 }
-
-
-
+/**
+ * _PATHstrcmp - compares PATH with environ to find PATH value
+ * @s1: pointer PATH string
+ * @s2: pointer to environ string with actual value
+ *
+ * Return: 0 on success
+ */
 int _PATHstrcmp(const char *s1, const char *s2)
 {
   int i;
@@ -54,7 +66,14 @@ int _PATHstrcmp(const char *s1, const char *s2)
     }
   return (0);
 }
-
+/**
+ * _concat - concats user string with PATH member string and /
+ * @tmp: static array to store concatenated string
+ * @av: pointer to array of user strings
+ * @tok: pointer to PATH token
+ *
+ * Return: 0 on success
+ */
 char *_concat(char *tmp, char **av, char *tok)
 {
   int len = 0;
