@@ -1,82 +1,64 @@
 #include "main.h"
 /**
- * _memcpy - copies information between void pointers.
- * @newptr: destination pointer.
- * @ptr: source pointer.
- * @size: size of the new pointer.
- *
- * Return: no return.
+ * _delim - Checks If A Character Match Any Char *
+ * @c: Character To Check
+ * @str: String To Check
+ * Return: 1 Succes, 0 Failed
  */
-void _memcpy(void *newptr, const void *ptr, unsigned int size)
+unsigned int _delim(char c, const char *str)
 {
-  char *char_ptr = (char *)ptr;
-  char *char_newptr = (char *)newptr;
-  unsigned int i;
+	unsigned int i;
 
-  for (i = 0; i < size; i++)
-    char_newptr[i] = char_ptr[i];
-}
-/*returns the next token in a C-string*/
-char *_strtok(char str[], const char *delim)
-{
-  static char *splitted, *str_end;
-  char *str_start;
-  unsigned int i, bool;
-
-  if (str != NULL)
-    {
-      if (cmp_chars(str, delim))
-	return (NULL);
-      splitted = str;
-      i = _strlen(str);
-      str_end = &str[i];
-    }
-  str_start = splitted;
-  if (str_start == str_end)
-    return (NULL);
-
-  for (bool = 0; *splitted; splitted++)
-    {
-      if (splitted != str_start)
-	if (*splitted && *(splitted - 1) == '\0')
-	  break;
-
-      for (i = 0; delim[i]; i++)
+	for (i = 0; str[i] != '\0'; i++)
 	{
-	  if (*splitted == delim[i])
-	    {
-	      *splitted = '\0';
-	      if (splitted == str_start)
-		str_start++;
-	      break;
-	    }
+		if (c == str[i])
+			return (1);
 	}
-      if (bool == 0 && *splitted)
-	bool = 1;
-    }
-  if (bool == 0)
-    return (NULL);
-  return (str_start);
+	return (0);
 }
 
-
-
-int cmp_chars(char str[], const char *delim)
+/**
+ * _strtok - Token A String Into Token (strtrok)
+ * @str: String
+ * @delim: Delimiter
+ * Return: Pointer To The Next Token Or NULL
+ */
+char *_strtok(char *str, const char *delim)
 {
-  unsigned int i, j, k;
+	static char *ts;
+	static char *nt;
+	unsigned int i;
 
-  for(i = 0, k = 0; str[i]; i++)
-    {
-      for (j = 0; delim[j]; j++)
+	if (str != NULL)
+		nt = str;
+	ts = nt;
+	if (ts == NULL)
+		return (NULL);
+	for (i = 0; ts[i] != '\0'; i++)
 	{
-	  if (str[i] == delim[j])
-	    {
-	      k++;
-	      break;
-	    }
+		if (_delim(ts[i], delim) == 0)
+			break;
 	}
-    }
-  if (i == k)
-    return (1);
-  return (0);
+	if (nt[i] == '\0' || nt[i] == '#')
+	{
+		nt = NULL;
+		return (NULL);
+	}
+	ts = nt + i;
+	nt = ts;
+	for (i = 0; nt[i] != '\0'; i++)
+	{
+		if (_delim(nt[i], delim) == 1)
+			break;
+	}
+	if (nt[i] == '\0')
+		nt = NULL;
+	else
+	{
+		nt[i] = '\0';
+		nt = nt + i + 1;
+		if (*nt == '\0')
+			nt = NULL;
+	}
+	return (ts);
 }
